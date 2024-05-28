@@ -1,0 +1,45 @@
+# Geral
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+.env
+*.env
+.DS_Store
+/venv/
+
+# Diretório do projeto do Django (backend)
+backend/static/
+backend/media/
+
+
+# Python
+*.py[cod]
+*$py.class
+
+# Django
+*.sqlite3
+*.pyc
+__pycache__/
+db.sqlite3
+.env
+*.env
+
+# node_modules
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Logs
+logs/
+*.log
+
+# Next.js
+.next/
+out/
+build/
+
+# Sistema Operacional
+.DS_Store
+Thumbs.db
