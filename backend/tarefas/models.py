@@ -11,7 +11,7 @@ class Tarefa(models.Model):
     usuario = models.ForeignKey(User, related_name='tarefas', on_delete=models.CASCADE)
 
     class Meta:
-        ordering = ['data_criacao']
+        ordering = ['-data_criacao']
 
     def __str__(self):
         return self.titulo
