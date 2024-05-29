@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Card } from "@/components/ui/card";
 
 export default function Component() {
   const [username, setUsername] = useState("");
@@ -41,7 +42,7 @@ export default function Component() {
 
   return (
     <div className="flex h-screen w-full items-center justify-center bg-gray-100 dark:bg-gray-950">
-      <div className="mx-auto w-full max-w-md rounded-lg bg-white p-8 shadow-lg dark:bg-gray-900">
+      <Card className="mx-auto w-full max-w-md rounded-lg bg-white p-8 shadow-lg dark:bg-gray-900">
         <div className="space-y-6">
           <div className="space-y-2 text-center">
             <h1 className="text-3xl font-bold">Login</h1>
@@ -80,7 +81,7 @@ export default function Component() {
             <p className="text-destructive mt-3 text-center">{errorMessage}</p>
           </div>
         </div>
-      </div>
+      </Card>
     </div>
   );
 }

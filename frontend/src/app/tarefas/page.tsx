@@ -15,20 +15,23 @@ import { Label } from "@radix-ui/react-label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { DialogClose } from "@radix-ui/react-dialog";
+import { useRouter } from "next/navigation";
 
 export default function TerefasPage() {
   const [tarefas, setTarefas] = useState([]);
   const [titulo, setTitulo] = useState("");
   const [descricao, setDescricao] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [token, setToken] = useState("");
 
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE3NTI3MzE4LCJpYXQiOjE3MTY5MjI1MTgsImp0aSI6IjU3ODQ4NzA1YjkyOTQzZTFhMWY1NTIyNGI1YzU3NTA3IiwidXNlcl9pZCI6MX0.2di0AXtSSmBsAarJUKR6zKcGZtaPMzw39Dr8NDGnwHg";
+  const router = useRouter();
 
   useEffect(() => {
+    const getToken = localStorage.getItem("token");
+    setToken(getToken);
     fetch("http://localhost:8000/tarefas/", {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${getToken}`,
       },
     })
       .then((response) => {
@@ -161,6 +164,11 @@ export default function TerefasPage() {
     </Dialog>
   );
 
+  const sair = () => {
+    localStorage.removeItem("token");
+    router.back();
+  };
+
   return (
     <div className="container mx-auto max-w-4xl px-4 py-8">
       <div className="flex items-center justify-between">
@@ -172,7 +180,16 @@ export default function TerefasPage() {
             Acompanhe suas tarefas e mantenha-se organizado.
           </p>
         </div>
-        {modal}
+        <div className="flex flex-col gap-2 justify-end items-end">
+          {modal}
+          <Button
+            className="bg-zinc-500 hover:bg-zinc-600"
+            size="sm"
+            onClick={sair}
+          >
+            Sair
+          </Button>
+        </div>
       </div>
       <div className="mt-8 space-y-4">
         {tarefas.length === 0 ? (
