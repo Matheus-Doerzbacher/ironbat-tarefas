@@ -1,9 +1,11 @@
 import { Checkbox } from "@/components/ui/checkbox";
+
 interface Tarefa {
   titulo: string;
   descricao?: string;
   realizada: boolean;
   data_criacao: string;
+  realizar_tarefa: () => void;
 }
 
 export function TarefaItem({
@@ -11,11 +13,12 @@ export function TarefaItem({
   descricao,
   realizada,
   data_criacao,
+  realizar_tarefa,
 }: Tarefa) {
   return (
     <div className="flex items-center justify-between rounded-lg bg-white p-4 shadow-md dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300">
       <div className="flex items-center space-x-4">
-        <Checkbox id="task1" checked={realizada} />
+        <Checkbox id="task1" checked={realizada} onClick={realizar_tarefa} />
         <div>
           <h3
             className={`
