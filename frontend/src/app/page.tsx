@@ -17,7 +17,7 @@ export default function Component() {
     setErrorMessage(""); // Limpa a mensagem de erro antes de tentar o login
 
     try {
-      const response = await fetch("http://localhost:8000/login/", {
+      const response = await fetch("api/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

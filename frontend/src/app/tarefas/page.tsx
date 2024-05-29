@@ -29,7 +29,7 @@ export default function TerefasPage() {
   useEffect(() => {
     const getToken = localStorage.getItem("token");
     setToken(getToken);
-    fetch("http://localhost:8000/tarefas/", {
+    fetch("api/tarefas/", {
       headers: {
         Authorization: `Bearer ${getToken}`,
       },
@@ -47,7 +47,7 @@ export default function TerefasPage() {
   }, []);
 
   function alterarRealizada(tarefa: any) {
-    fetch(`http://localhost:8000/tarefas/${tarefa.id}/`, {
+    fetch(`api/tarefas/${tarefa.id}/`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -73,7 +73,7 @@ export default function TerefasPage() {
   }
 
   function adicionarTarefa() {
-    fetch(`http://localhost:8000/tarefas/`, {
+    fetch(`api/tarefas/`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -100,7 +100,7 @@ export default function TerefasPage() {
   }
 
   function deletarTarefa(tarefa: any) {
-    fetch(`http://localhost:8000/tarefas/${tarefa.id}/`, {
+    fetch(`api/tarefas/${tarefa.id}/`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
