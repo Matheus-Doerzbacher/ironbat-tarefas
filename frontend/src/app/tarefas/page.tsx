@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { useRouter } from "next/navigation";
+import { ROUTES } from "../../../apiRoutes";
 
 export default function TerefasPage() {
   const [tarefas, setTarefas] = useState([]);
@@ -29,7 +30,7 @@ export default function TerefasPage() {
   useEffect(() => {
     const getToken = localStorage.getItem("token");
     setToken(getToken);
-    fetch("api/tarefas/", {
+    fetch(ROUTES.URL_TAREFAS, {
       headers: {
         Authorization: `Bearer ${getToken}`,
       },
@@ -47,7 +48,7 @@ export default function TerefasPage() {
   }, []);
 
   function alterarRealizada(tarefa: any) {
-    fetch(`api/tarefas/${tarefa.id}/`, {
+    fetch(`${ROUTES.URL_TAREFAS}${tarefa.id}/`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -73,7 +74,7 @@ export default function TerefasPage() {
   }
 
   function adicionarTarefa() {
-    fetch(`api/tarefas/`, {
+    fetch(ROUTES.URL_TAREFAS, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -100,7 +101,7 @@ export default function TerefasPage() {
   }
 
   function deletarTarefa(tarefa: any) {
-    fetch(`api/tarefas/${tarefa.id}/`, {
+    fetch(`${ROUTES.URL_TAREFAS}${tarefa.id}/`, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",

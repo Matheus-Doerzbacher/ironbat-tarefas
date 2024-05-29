@@ -3,8 +3,9 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { Card } from "@/components/ui/card";
+import { ROUTES } from "../../apiRoutes";
 
 export default function Component() {
   const [username, setUsername] = useState("");
@@ -17,7 +18,8 @@ export default function Component() {
     setErrorMessage(""); // Limpa a mensagem de erro antes de tentar o login
 
     try {
-      const response = await fetch("api/login/", {
+      console.log(ROUTES.URL_LOGIN);
+      const response = await fetch(ROUTES.URL_LOGIN, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

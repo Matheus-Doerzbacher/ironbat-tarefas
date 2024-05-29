@@ -32,8 +32,8 @@ router.register(r'tarefas', TarefaViewSet, basename='tarefa')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
     path('auth/', include('rest_framework.urls')),
     # Login
-    path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
 ]
